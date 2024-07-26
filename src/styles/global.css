@@ -1,6 +1,93 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
 
 * {
-    font-family: "Poppins", sans-serif;
-    font-style: normal;
+    font-family: "Red Hat Display", sans-serif !important;
   }
+
+.chat-wrapper{
+  height: 100vh;
+}
+.menu-col{
+  height: 100vh;
+  background-color: #ffc53d;
+}
+
+.contacts-col{
+  height: 100vh;
+  background-color: #ffdf96;
+
+}
+.chat-col{
+  height: 100vh;
+  background-color: #ffffff;
+
+}
+
+.avatar{
+  border-radius: 50%;
+  border: 1.5px lightgray solid;
+}
+
+/* *************************** */
+
+/* ChatApp.css */
+.chat-app {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 500px;
+  border: 1px solid #ccc;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.chat-window {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  max-width: 70%;
+  word-wrap: break-word;
+}
+
+.me {
+  align-self: flex-end;
+  background-color: #c6d3f8;
+  text-align: right;
+}
+
+.recipient {
+  align-self: flex-start;
+  background-color: #ffffff;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+.input-box {
+  display: flex;
+  border-top: 1px solid #ccc;
+  padding: 10px;
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
