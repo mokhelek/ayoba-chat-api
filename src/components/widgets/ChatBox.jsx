@@ -6,7 +6,6 @@ function ChatBox() {
   let localStorageChats = localStorage.getItem('messageDatabase') ? JSON.parse(localStorage.getItem('messageDatabase')) : [];
   const [input, setInput] = useState('');
   const [messageDatabase, setMessageDatabase] = useState(localStorageChats);
-  const [selectedLanguage, setSelectedLanguage] = useState('xh'); 
 
   const headers = {
     'accept': 'application/json',
