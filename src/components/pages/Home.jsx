@@ -7,18 +7,20 @@ import AuthButton from '../widgets/AuthButton';
 
 function Home() {
 
+
   return (
     <>
       <div className="container-fluid">
+          
         <div className="row chat-wrapper">
           <div className="col-1 menu-col">
             <br />
-            <div className="row">
+            <div style={{borderBottom:"1px #3498db solid"}} className="row pb-3">
               <center>
-                <img style={{ backgroundColor: "white" }} className='img-fluid' height={50} width={50} src={ayobaLogo} alt="" />
+                <img style={{ backgroundColor: "white" }} className='img-fluid' height={38} width={38} src={ayobaLogo} alt="" />
               </center>
             </div>
-            <hr />
+          
 
             <div className="row">
               <AuthButton />
@@ -26,7 +28,7 @@ function Home() {
             <br />
             <div className="row">
               <center>
-                <button onClick={()=>{localStorage.removeItem("messageDatabase")}} style={{height:"45px" , width:"45px"}} className="refresh">
+                <button onClick={()=>{localStorage.removeItem("messageDatabase")}} className="refresh">
                   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#fff" className="bi bi-arrow-clockwise" viewBox="0 0 16 16">
                     <path fillRule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z" />
                     <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466" />
@@ -36,16 +38,16 @@ function Home() {
             </div>
 
           </div>
-          <div className="col-4 contacts-col">
+          <div style={{boxShadow:"10px 0px 15px -5px rgba(0, 0, 0, 0.3)"}} className="col-3 contacts-col">
             <br />
-            <div style={{ borderBottom: "1px #5028ed solid", paddingBottom: "1.3rem" }} >
-              <input className='form-control' type="text" placeholder='Search ...' name="" id="" />
+            <div  style={{borderBottom:"1px #3498db solid"}} className="row pb-3">
+              <input className='form-control' type="text" placeholder='Search Conversations' name="" id="" />
             </div>
             <br />
             <RecentChats />
           </div>
 
-          <div className="col-7 chat-col" >
+          <div className="col-8 chat-col" >
             <div className="container p-3">
               <div className="row" style={{ borderBottom: "1.5px #1a00dc53 solid", padding: '0.5rem 0 1rem 0' }} >
                 <div className="d-flex">

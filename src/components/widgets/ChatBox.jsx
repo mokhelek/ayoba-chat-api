@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { TranslateMsgAPI } from '../../utils/TranslateMsgAPI'; // Ensure this is the correct path to your TranslateMsgAPI file
 
 function ChatBox() {
   let localStorageChats = localStorage.getItem('messageDatabase') ? JSON.parse(localStorage.getItem('messageDatabase')) : [];
   const [input, setInput] = useState('');
   const [messageDatabase, setMessageDatabase] = useState(localStorageChats);
+  const [selectedLanguage, setSelectedLanguage] = useState('xh'); 
 
   const headers = {
     'accept': 'application/json',
@@ -12,17 +14,29 @@ function ChatBox() {
     'Content-Type': 'application/json',
   };
 
+
+  const handleLanguageChange =  (e) => {
+    console.log(e.target.value)
+    localStorage.setItem('language', e.target.value );
+    
+    
+  };
+
   const sendMessage = async () => {
     const url = 'http://api.ayoba.me/v1/business/message';
-    const data = {
-      msisdns: ['+27646569280'],
-      message: {
-        type: 'text',
-        text: `${input}`,
-      },
-    };
 
     try {
+      // Translate the message from the selected language to English before sending
+      const translatedText = await TranslateMsgAPI(input, 'en');
+
+      const data = {
+        msisdns: ['+27646569280'],
+        message: {
+          type: 'text',
+          text: `${translatedText}`,
+        },
+      };
+
       const response = await axios.post(url, data, { headers });
       let responseArr = response.data;
       console.log('Message sent successfully:', response.data);
@@ -30,6 +44,7 @@ function ChatBox() {
       let text_to_id_obj = {};
       text_to_id_obj[responseArr[0].messageId] = input;
       console.log(text_to_id_obj);
+
       await messagesObj(response.data, text_to_id_obj, responseArr[0].messageId);
       setInput(''); // Clear the input box after sending the message
     } catch (error) {
@@ -37,7 +52,7 @@ function ChatBox() {
     }
   };
 
-  const messagesObj = async (sentMessage = [], text_to_id_obj = {}, inputCorrelationId = '') => {
+  const messagesObj = async (sentMessage = [], text_to_id_obj = {}, inputCorrelationId = '' ) => {
     try {
       const receivedMessagesResponse = await axios.get('http://api.ayoba.me/v1/business/message', { headers });
 
@@ -61,6 +76,15 @@ function ChatBox() {
         return acc;
       }, {});
 
+      // Translate received messages from English to the selected language
+      for (const receivedMessage of receivedMessages) {
+        if (receivedMessage.message.type === 'text') {
+          console.log("new lingo ",localStorage.getItem('language'))
+          const translatedText = await TranslateMsgAPI(receivedMessage.message.text, localStorage.getItem('language'));
+          receivedMessage.message.translatedText = translatedText;
+        }
+      }
+
       receivedMessages.forEach(({ msisdn, message }) => {
         if (message.type !== 'text') return;
 
@@ -70,7 +94,7 @@ function ChatBox() {
           formattedMessages[formattedMsisdn] = [];
         }
 
-        formattedMessages[formattedMsisdn].push({ id: message.id, message: message.text, from: 'receiver' });
+        formattedMessages[formattedMsisdn].push({ id: message.id, message: message.text, translatedMessage: message.translatedText, from: 'receiver' });
       });
 
       let x = JSON.parse(localStorage.getItem('messageDatabase'));
@@ -107,6 +131,8 @@ function ChatBox() {
     return () => clearInterval(interval); // Cleanup the interval on component unmount
   }, []);
 
+  
+
   return (
     <div>
       <div className="container">
@@ -117,7 +143,7 @@ function ChatBox() {
                 {messageDatabase['27646569280'].map((msg, index) => (
                   msg.from ? (
                     <div key={index} className={`message ${msg.from}`}>
-                      {msg.message}
+                      {msg.from === 'receiver' ? msg.translatedMessage || msg.message : msg.message}
                     </div>
                   ) : null
                 ))}
@@ -127,6 +153,10 @@ function ChatBox() {
         </div>
 
         <div className="input-box">
+          <select onChange={handleLanguageChange}>
+            <option value="xh">Xhosa</option>
+            <option value="st">Sesotho</option>
+          </select>
           <input
             placeholder='Type your message here ...'
             type="text"
