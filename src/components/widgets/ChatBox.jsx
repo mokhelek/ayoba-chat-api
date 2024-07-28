@@ -14,14 +14,6 @@ function ChatBox() {
     'Content-Type': 'application/json',
   };
 
-
-  const handleLanguageChange =  (e) => {
-    console.log(e.target.value)
-    localStorage.setItem('language', e.target.value );
-    
-    
-  };
-
   const sendMessage = async () => {
     const url = 'http://api.ayoba.me/v1/business/message';
 
@@ -131,12 +123,10 @@ function ChatBox() {
     return () => clearInterval(interval); // Cleanup the interval on component unmount
   }, []);
 
-  
-
   return (
-    <div>
-      <div className="container">
-        <div style={{ borderRadius: "10px", height: "500px", padding: "2rem", overflow: 'scroll' }}>
+    <div className="chatbox-container">
+      <div className="container-fluid h-100">
+        <div style={{ borderRadius: "10px", height: "100%", padding: "0.2rem", overflow: 'scroll' }}>
           <div className="chat-window">
             {messageDatabase['27646569280'] && (
               <>
@@ -153,10 +143,6 @@ function ChatBox() {
         </div>
 
         <div className="input-box">
-          <select onChange={handleLanguageChange}>
-            <option value="xh">Xhosa</option>
-            <option value="st">Sesotho</option>
-          </select>
           <input
             placeholder='Type your message here ...'
             type="text"

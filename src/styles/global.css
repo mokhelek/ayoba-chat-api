@@ -1,18 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
-:root {
-	--toastify-color-light: #fff;
-	--toastify-color-info: #3498db;
-	--toastify-color-success: #07bc0c;
-	--toastify-color-warning: #f1c40f;
-	--toastify-toast-background: #fff;
-	--toastify-spinner-color: #616161;
-	--toastify-spinner-color-empty-area: #e0e0e0;
-	--toastify-color-progress-light: linear-gradient(90deg,#5ac8fa,#007aff,#34aadc,#5856d6);
-	--toastify-color-progress-dark: #bb86fc;
-
-}
-
 
 * {
   font-family: "Nunito", sans-serif !important;
@@ -67,9 +54,16 @@
 }
 
 
+/* Add this CSS to your stylesheet */
+.chatbox-container {
+  height: 76vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+}
 
-
-
+.container-fluid.h-100 {
+  height: 100%; /* Full height of the container */
+}
 
 
 
@@ -106,6 +100,8 @@
   align-self: flex-end;
   background-color: #c9f8c6;
   text-align: right;
+  border-radius: 15px;
+  padding: 6px 20px;
 }
 
 .receiver {
@@ -113,6 +109,8 @@
   background-color: #ffffff;
   text-align: left;
   border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 6px 20px;
 }
 
 .input-box {

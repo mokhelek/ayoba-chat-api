@@ -32,7 +32,7 @@ function RecentChats() {
                                 <img className='recent-avatar' src={avatar1} alt="" />
                             </span>
                             <div style={{ marginLeft: "1rem", marginTop: "5px" }} >
-                                <h6 style={{ color: '#645fec', fontWeight: '600', marginBottom: 0, fontSize: "0.9rem" }}> +27 984 4742 </h6>
+                                <h6 style={{ color: '#645fec', fontWeight: '600', marginBottom: 0, fontSize: "0.9rem" }}> +21 9845 474 </h6>
                                 <small style={{ margin: 0, fontSize: "0.75rem" }} className='text-secondary'> The documents have been sent</small>
                             </div>
                         </div>
@@ -49,7 +49,7 @@ function RecentChats() {
                                 </svg>
                             </span>
                             <div style={{ marginLeft: "1rem", marginTop: "5px" }} >
-                                <h6 style={{ color: '#645fec', fontWeight: '600', marginBottom: 0, fontSize: "0.9rem" }}> +27 984 4742 </h6>
+                                <h6 style={{ color: '#645fec', fontWeight: '600', marginBottom: 0, fontSize: "0.9rem" }}> +27 584 3342 </h6>
                                 <small style={{ margin: 0, fontSize: "0.75rem" }} className='text-secondary'> Lorem ipsum impedit.</small>
                             </div>
                         </div>
