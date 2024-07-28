@@ -1,21 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root {
+	--toastify-color-light: #fff;
+	--toastify-color-info: #3498db;
+	--toastify-color-success: #07bc0c;
+	--toastify-color-warning: #f1c40f;
+	--toastify-toast-background: #fff;
+	--toastify-spinner-color: #616161;
+	--toastify-spinner-color-empty-area: #e0e0e0;
+	--toastify-color-progress-light: linear-gradient(90deg,#5ac8fa,#007aff,#34aadc,#5856d6);
+	--toastify-color-progress-dark: #bb86fc;
+
+}
+
 
 * {
-    font-family: "Red Hat Display", sans-serif !important;
-  }
+  font-family: "Nunito", sans-serif !important;
+  color: #394146;
+}
 
 .chat-wrapper{
   height: 100vh;
 }
 .menu-col{
   height: 100vh;
-  background-color: #ffc53d;
+  background-color: #f1c40fb2;
 }
 
 .contacts-col{
   height: 100vh;
-  background-color: #ffdf96;
-  padding: 0 2rem;
+  background-color: #f1c40f6f;
+  padding: 0 1rem;
 
 }
 .chat-col{
@@ -31,8 +46,6 @@
 
 .recent-chat-wrapper{
   padding: 0.5rem;
-  background-color: #c6d3f8;
-  border-radius: 10px;
 }
 
 
@@ -41,7 +54,17 @@
   border-radius: 10px;
 }
 
+.form-control{
+  border-radius: 20px;
+  background-color: #f1c40fa2;
+}
 
+.recent-avatar{
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  border: 2px #3498db solid;
+}
 
 
 
